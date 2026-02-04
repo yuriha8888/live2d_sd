@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LD Sample</title>
+
+<style>
+body {
+  margin: 0;
+  background: transparent;
+  font-family: Arial, sans-serif;
+}
+
+/* 카드 */
+.card {
+  max-width: 840px;
+  margin: 0 auto;
+  background: #acc9fc;
+  border-radius: 16px;
+  padding: 14px 0 18px;
+}
+
+/* 제목 */
+.title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2d5a;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 12px;
+  color: #2e3a66;
+  margin-bottom: 10px;
+}
+
+/* 메인 캐러셀 */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 472px; /* 840 * 9 / 16 */
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide iframe {
+  width: 100%;
+  max-width: 840px;
+  height: 100%;
+  border-radius: 14px;
+  border: none;
+}
+
+/* 화살표 */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left { left: 8px; }
+.arrow.right { right: 8px; }
+
+/* 🔥 썸네일 슬라이드 */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 0 14px;
+  overflow-x: auto;
+}
+
+.thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbs::-webkit-scrollbar-thumb {
+  background: rgba(31,45,90,0.35);
+  border-radius: 10px;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.thumb.active {
+  opacity: 1;
+  border-color: #1f2d5a;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="title">LD Sample</div>
+  <div class="subtitle">Live2D Rigging Video</div>
+
+  <!-- 메인 영상 -->
+  <div class="carousel">
+    <button class="arrow left" onclick="prev()">‹</button>
+    <button class="arrow right" onclick="next()">›</button>
+
+    <div class="track" id="track">
+      <div class="slide"><iframe src="https://www.youtube.com/embed/XVWdGuv98cA" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/QkrOsMwS6Jc" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/VTTCGMLKsck" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/o5cCjZhmjW0" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/BJ6W7zSCWvI" allowfullscreen></iframe></div>
+    </div>
+  </div>
+
+  <!-- 🔥 미리보기 -->
+  <div class="thumbs" id="thumbs">
+    <div class="thumb active" onclick="moveTo(0)">
+      <img src="https://img.youtube.com/vi/XVWdGuv98cA/hqdefault.jpg">
+    </div>
+    <div class="thumb" onclick="moveTo(1)">
+      <img src="https://img.youtube.com/vi/QkrOsMwS6Jc/hqdefault.jpg">
+    </div>
+    <div class="thumb" onclick="moveTo(2)">
+      <img src="https://img.youtube.com/vi/VTTCGMLKsck/hqdefault.jpg">
+    </div>
+    <div class="thumb" onclick="moveTo(3)">
+      <img src="https://img.youtube.com/vi/o5cCjZhmjW0/hqdefault.jpg">
+    </div>
+    <div class="thumb" onclick="moveTo(4)">
+      <img src="https://img.youtube.com/vi/BJ6W7zSCWvI/hqdefault.jpg">
+    </div>
+  </div>
+</div>
+
+<script>
+const track = document.getElementById("track");
+const thumbs = document.querySelectorAll(".thumb");
+const total = thumbs.length;
+let index = 0;
+
+function update() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+  thumbs.forEach((t, i) => t.classList.toggle("active", i === index));
+}
+
+function next() {
+  index = (index + 1) % total;
+  update();
+}
+
+function prev() {
+  index = (index - 1 + total) % total;
+  update();
+}
+
+function moveTo(i) {
+  index = i;
+  update();
+}
+</script>
+
+</body>
+</html>

@@ -12,7 +12,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* 카드 */
 .card {
   max-width: 840px;
   margin: 0 auto;
@@ -21,26 +20,19 @@ body {
   padding: 14px 0 18px;
 }
 
-/* 제목 */
 .title {
   text-align: center;
   font-size: 18px;
   font-weight: bold;
   color: #1f2d5a;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 12px;
-  color: #2e3a66;
   margin-bottom: 10px;
 }
 
-/* 메인 캐러셀 */
+/* 메인 영상 */
 .carousel {
   position: relative;
   width: 100%;
-  height: 472px; /* 840 * 9 / 16 */
+  height: 472px;
   overflow: hidden;
 }
 
@@ -59,7 +51,6 @@ body {
 
 .slide iframe {
   width: 100%;
-  max-width: 840px;
   height: 100%;
   border-radius: 14px;
   border: none;
@@ -83,7 +74,7 @@ body {
 .arrow.left { left: 8px; }
 .arrow.right { right: 8px; }
 
-/* 🔥 썸네일 슬라이드 */
+/* 썸네일 */
 .thumbs {
   display: flex;
   gap: 10px;
@@ -130,36 +121,34 @@ body {
 <div class="card">
   <div class="title">SD Sample</div>
 
-  <!-- 메인 영상 -->
   <div class="carousel">
     <button class="arrow left" onclick="prev()">‹</button>
     <button class="arrow right" onclick="next()">›</button>
 
     <div class="track" id="track">
-      <div class="slide"><iframe src="https://www.youtube.com/embed/T8R18oq64Ow?si=zkVcrKLb18RnJ0Rp" allowfullscreen></iframe></div>
-      <div class="slide"><iframe src="https://www.youtube.com/embed/PjVecG_rs90?si=DF9woK3uQEGRjL1X" allowfullscreen></iframe></div>
-      <div class="slide"><iframe src="https://www.youtube.com/embed/jGZrpRL5F70?si=DJwsATNs9Z6Jqg5H" allowfullscreen></iframe></div>
-      <div class="slide"><iframe src="https://www.youtube.com/embed/X1C3nAev5PU?si=Hz2tVRzDkEEWQtov" allowfullscreen></iframe></div>
-      <div class="slide"><iframe src="https://www.youtube.com/embed/m2ow6rAFkyU?si=euqPiSCQFeAKLFvy" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/T8R18oq64Ow" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/PjVecG_rs90" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/jGZrpRL5F70" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/X1C3nAev5PU" allowfullscreen></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/m2ow6rAFkyU" allowfullscreen></iframe></div>
     </div>
   </div>
 
-  <!-- 🔥 미리보기 -->
-  <div class="thumbs" id="thumbs">
+  <div class="thumbs">
     <div class="thumb active" onclick="moveTo(0)">
-      <img src="https://img.youtube.com/vi/T8R18oq64Ow?si=zkVcrKLb18RnJ0Rp/hqdefault.jpg">
+      <img src="https://img.youtube.com/vi/T8R18oq64Ow/hqdefault.jpg">
     </div>
     <div class="thumb" onclick="moveTo(1)">
-      <img src="https://img.youtube.com/vi/PjVecG_rs90?si=DF9woK3uQEGRjL1X/hqdefault.jpg">
+      <img src="https://img.youtube.com/vi/PjVecG_rs90/hqdefault.jpg">
     </div>
     <div class="thumb" onclick="moveTo(2)">
-      <img src="https://img.youtube.com/vi/jGZrpRL5F70?si=DJwsATNs9Z6Jqg5H/hqdefault.jpg">
+      <img src="https://img.youtube.com/vi/jGZrpRL5F70/hqdefault.jpg">
     </div>
     <div class="thumb" onclick="moveTo(3)">
-      <img src="https://img.youtube.com/vi/X1C3nAev5PU?si=Hz2tVRzDkEEWQtov/hqdefault.jpg">
+      <img src="https://img.youtube.com/vi/X1C3nAev5PU/hqdefault.jpg">
     </div>
     <div class="thumb" onclick="moveTo(4)">
-      <img src="https://img.youtube.com/vi/m2ow6rAFkyU?si=euqPiSCQFeAKLFvy/hqdefault.jpg">
+      <img src="https://img.youtube.com/vi/m2ow6rAFkyU/hqdefault.jpg">
     </div>
   </div>
 </div>
